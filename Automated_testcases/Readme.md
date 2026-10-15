@@ -65,24 +65,7 @@ npx playwright install
 
 ---
 
-## 📁 Repository Structure
 
-* [pages/](https://www.google.com/search?q=./pages)
-* [login.js](https://www.google.com/search?q=./pages/login.js)
-* [product.js](https://www.google.com/search?q=./pages/product.js)
-* [signup.js](https://www.google.com/search?q=./pages/signup.js)
-
-
-* [tests/](https://www.google.com/search?q=./tests)
-* [login.spec.js](https://www.google.com/search?q=./tests/login.spec.js)
-* [registration.spec.js](https://www.google.com/search?q=./tests/registration.spec.js)
-* [search.spec.js](https://www.google.com/search?q=./tests/search.spec.js)
-
-
-* [package.json](https://www.google.com/search?q=./package.json)
-* [README.md](https://www.google.com/search?q=./README.md)
-
----
 
 ## 🔍 Additional Execution Options
 
