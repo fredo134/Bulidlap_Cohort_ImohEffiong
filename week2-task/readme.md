@@ -21,7 +21,8 @@ npx playwright test
 
 ## 📋 Test Cases Automated
 
-* **TC-02:**Registration with Existing Email (`tests/TC_02.spec.js`)
+
+* **TC-02:** Registration with Existing Email  (`tests/TC_02.spec.js`)
 * **TC-04:** Login with Invalid Credentials (`tests/TC_04.spec.js`)
 * **TC-10:** Brand Navigation Filter (`tests/TC_10.spec.js`)
 * **TC-21:** Empty Payment Validation (`tests/TC_21.spec.js`)
