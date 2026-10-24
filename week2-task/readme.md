@@ -46,7 +46,7 @@ git clone [https://github.com/fredo134/Bulidlap_Cohort_ImohEffiong.git](https://
 
 2. **Navigate to the project folder:**
 ```bash
-cd "Bulidlap_Cohort_ImohEffiong/Automated_testcases"
+cd "Bulidlap_Cohort_ImohEffiong/week2-task
 
 ```
 
