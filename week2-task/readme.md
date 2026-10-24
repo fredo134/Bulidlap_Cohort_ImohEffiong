@@ -86,9 +86,9 @@ npx playwright test --ui
 ```
 
 
-* **Run an individual test file (e.g., Search test only):**
+* **Run an individual test file (e.g.TC_02.spec.js):**
 ```bash
-npx playwright test search.spec.js --headed
+npx playwright test TC_02.spec.js --headed
 
 ```
 
