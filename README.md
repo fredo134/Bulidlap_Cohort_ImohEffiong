@@ -34,7 +34,7 @@ TC-05: Product Search Flow (test/search.spec.js)
 
 Submission Tag: week-1
 
-For detailed setup and execution instructions, please refer to the [Automated Test Cases README](./Automated_testcases/README.md).
+For detailed setup and execution instructions, please refer to the [Automated Test Cases README](./Automated_testcases/Readme.md).
 
 🔹 Week 2: Regression Testing & Extended Scenarios
 Focus: Exploratory Testing (Charter, Session Notes, Network Throttling, Defect Logging) and Automated Regression Suite Expansion.
@@ -52,6 +52,8 @@ TC-21: Empty Payment Validation (test/TC_21_empty_payment.spec.js)
 Defects Identified: Major payment input sanitization (DEF-01) and expired card validation bypass (DEF-03).
 
 Submission Tag: week-2
+
+For detailed setup and execution instructions, please refer to the [Week-2 README](./week2-task/Readme.md).
 
 🔹 Week 3: Performance, API, & Final Deliverables (Upcoming)
 Documentation & scripts will be linked here upon completion.
