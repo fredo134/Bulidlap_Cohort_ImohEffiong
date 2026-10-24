@@ -53,7 +53,7 @@ Defects Identified: Major payment input sanitization (DEF-01) and expired card v
 
 Submission Tag: week-2
 
-For detailed setup and execution instructions, please refer to the [Week-2 README](./week2-task/Readme.md).
+For detailed setup and execution instructions, please refer to the [Week-2 README](./week2-task/readme.md).
 
 🔹 Week 3: Performance, API, & Final Deliverables (Upcoming)
 Documentation & scripts will be linked here upon completion.
