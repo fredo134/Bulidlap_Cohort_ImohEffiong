@@ -34,7 +34,7 @@ TC-05: Product Search Flow (test/search.spec.js)
 
 Submission Tag: week-1
 
-For detailed setup and execution instructions, please refer to the Automated Test Cases README.
+For detailed setup and execution instructions, please refer to the [Automated Test Cases README](./Automated_testcases/README.md).
 
 🔹 Week 2: Regression Testing & Extended Scenarios
 Focus: Exploratory Testing (Charter, Session Notes, Network Throttling, Defect Logging) and Automated Regression Suite Expansion.
