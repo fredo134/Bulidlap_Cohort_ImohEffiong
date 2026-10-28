@@ -70,4 +70,6 @@ This project features a fully automated CI/CD pipeline configured via GitHub Act
 - **Author:** Imoh Effiong
 - **Target Platform:** https://automationexercise.com/ API List
 - **Tools:** Postman, Newman, Node.js, GitHub Actions CI/CD
+- **Tag:** `week-3`
+
 
