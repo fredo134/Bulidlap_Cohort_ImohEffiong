@@ -1,0 +1,556 @@
+{
+  "info": {
+    "_postman_id": "29c61e54-df0f-4127-9acc-62a8d2fe7356",
+    "name": "Automation Exercise - API Tests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "54196650",
+    "_collection_link": "https://go.postman.co/collection/54196650-29c61e54-df0f-4127-9acc-62a8d2fe7356?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "register new user with valid credentails",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});\n\npm.test(\"Response time is acceptable\", function () {\n    pm.expect(pm.response.responseTime).to.be.below(10000);\n});\n\npm.test(\"User creation failed as expected\", function () {\n    var jsonData = pm.response.json();\n   pm.expect(jsonData.responseCode).to.eql(201);\n    pm.expect(jsonData.message).to.eql(\"User created!\");\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "name",
+              "value": "Imoh Effiong"
+            },
+            {
+              "key": "email",
+              "value": "imoh{{$randomInt}}@test.com"
+            },
+            {
+              "key": "password",
+              "value": "Password123"
+            },
+            {
+              "key": "title",
+              "value": "Mr"
+            },
+            {
+              "key": "birth_date",
+              "value": "10"
+            },
+            {
+              "key": "birth_month",
+              "value": "January"
+            },
+            {
+              "key": "birth_year",
+              "value": "1999"
+            },
+            {
+              "key": "firstname",
+              "value": "Imoh"
+            },
+            {
+              "key": "lastname",
+              "value": "Effiong"
+            },
+            {
+              "key": "company",
+              "value": "BL4"
+            },
+            {
+              "key": "address1",
+              "value": "123 uyo"
+            },
+            {
+              "key": "country",
+              "value": "United states"
+            },
+            {
+              "key": "state",
+              "value": "California"
+            },
+            {
+              "key": "city",
+              "value": "Los Angeles"
+            },
+            {
+              "key": "zipcode",
+              "value": "90001"
+            },
+            {
+              "key": "mobile_number",
+              "value": "09031683855"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseUrl}}/createAccount",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "createAccount"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Register User - Missing Last Name",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Response time is within acceptable limit\", function () {\r\n    pm.expect(pm.response.responseTime).to.be.below(2000);\r\n});\r\n\r\npm.test(\"API rejects registration when last name parameter is missing\", function () {\r\n    var jsonData = pm.response.json();\r\n    // Automation Exercise API returns responseCode 400 for bad requests / missing parameters\r\n    pm.expect(jsonData.responseCode).to.eql(400);\r\n    pm.expect(jsonData.message).to.include(\"lastname parameter is missing\");\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "name",
+              "value": "Imoh"
+            },
+            {
+              "key": "email",
+              "value": "imoh{{$randomInt}}@test.com"
+            },
+            {
+              "key": "password",
+              "value": "Password123"
+            },
+            {
+              "key": "title",
+              "value": "Mr"
+            },
+            {
+              "key": "birth_date",
+              "value": "10"
+            },
+            {
+              "key": "birth_month",
+              "value": "january"
+            },
+            {
+              "key": "birth_year",
+              "value": "1994"
+            },
+            {
+              "key": "firstname",
+              "value": "Imoh"
+            },
+            {
+              "key": "",
+              "value": ""
+            },
+            {
+              "key": "company",
+              "value": "BL4"
+            },
+            {
+              "key": "address1",
+              "value": "uyo"
+            },
+            {
+              "key": "country",
+              "value": "United states"
+            },
+            {
+              "key": "state",
+              "value": "California"
+            },
+            {
+              "key": "city",
+              "value": "Los Angeles"
+            },
+            {
+              "key": "zipcode",
+              "value": "90001"
+            },
+            {
+              "key": "mobile_number",
+              "value": "09031683855"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseUrl}}/createAccount",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "createAccount"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Register User - Existing Emailequest",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});\n\npm.test(\"API rejects duplicate email registration\", function () {\n    var jsonData = pm.response.json();\n\n    pm.expect(jsonData.responseCode).to.eql(400);\n    pm.expect(jsonData.message).to.include(\"Email already exists!\");\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "name",
+              "value": "Imoh"
+            },
+            {
+              "key": "email",
+              "value": "imoh1test@gmail.com"
+            },
+            {
+              "key": "password",
+              "value": "Password123"
+            },
+            {
+              "key": "title",
+              "value": "Mr"
+            },
+            {
+              "key": "birth_date",
+              "value": "10"
+            },
+            {
+              "key": "birth_month",
+              "value": "january"
+            },
+            {
+              "key": "birth_year",
+              "value": "1994"
+            },
+            {
+              "key": "firstname",
+              "value": "Imoh"
+            },
+            {
+              "key": "lastname",
+              "value": "Effiong"
+            },
+            {
+              "key": "company",
+              "value": "BL4"
+            },
+            {
+              "key": "address1",
+              "value": "uyo"
+            },
+            {
+              "key": "country",
+              "value": "United states"
+            },
+            {
+              "key": "state",
+              "value": "California"
+            },
+            {
+              "key": "city",
+              "value": "Los Angeles"
+            },
+            {
+              "key": "zipcode",
+              "value": "90001"
+            },
+            {
+              "key": "mobile_number",
+              "value": "09031683855"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseUrl}}/createAccount",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "createAccount"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Verify Login - Valid Credentials",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Response time is acceptable\", function () {\r\n    pm.expect(pm.response.responseTime).to.be.below(2000);\r\n});\r\n\r\npm.test(\"User login is verified successfully\", function () {\r\n    var jsonData = pm.response.json();\r\n  \r\n    pm.expect(jsonData.responseCode).to.eql(200);\r\n    pm.expect(jsonData.message).to.eql(\"User exists!\");\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "email",
+              "value": "imoh1test@gmail.com"
+            },
+            {
+              "key": "password",
+              "value": "Password123"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseUrl}}/verifyLogin",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "verifyLogin"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Verify Login - Incorrect Password",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Response time is within acceptable limit\", function () {\r\n    pm.expect(pm.response.responseTime).to.be.below(2000);\r\n});\r\n\r\npm.test(\"API rejects login with incorrect password\", function () {\r\n    var jsonData = pm.response.json();\r\n   \r\n    pm.expect(jsonData.responseCode).to.eql(404);\r\n    pm.expect(jsonData.message).to.eql(\"User not found!\");\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "email",
+              "value": "imoh1test@ggmail.com"
+            },
+            {
+              "key": "password",
+              "value": "1111"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseUrl}}/verifyLogin",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "verifyLogin"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Verify Login - Missing Email",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"API rejects login when email parameter is missing\", function () {\r\n    \r\n    if (pm.response.text()) {\r\n        var jsonData = pm.response.json();\r\n        pm.expect(jsonData.responseCode).to.eql(400);\r\n        pm.expect(jsonData.message).to.include(\"Bad request, email or password parameter is missing in POST request.\");\r\n    }\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "",
+              "value": ""
+            },
+            {
+              "key": "password",
+              "value": "Password123"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseUrl}}/verifyLogin",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "verifyLogin"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get User Details by Email",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});\n\npm.test(\"Response time is within acceptable limit\", function () {\n    pm.expect(pm.response.responseTime).to.be.below(2000);\n});\n\npm.test(\"User details retrieved successfully\", function () {\n    if (pm.response.text()) {\n        var jsonData = pm.response.json();\n        pm.expect(jsonData.responseCode).to.eql(200);\n        pm.expect(jsonData.user).to.be.an('object');\n    }\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/getUserDetailByEmail?email=imoh1test@gmail.com",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "getUserDetailByEmail"
+          ],
+          "query": [
+            {
+              "key": "email",
+              "value": "imoh1test@gmail.com"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update User Account",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Response time is acceptable\", function () {\r\n    pm.expect(pm.response.responseTime).to.be.below(2000);\r\n});\r\n\r\npm.test(\"User account updated successfully\", function () {\r\n    var jsonData = pm.response.json();\r\n   \r\n    pm.expect(jsonData.responseCode).to.eql(200);\r\n    pm.expect(jsonData.message).to.eql(\"User updated!\");\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "name",
+              "value": "ImohQA  tester"
+            },
+            {
+              "key": "email",
+              "value": "imoh1test@gmail.com"
+            },
+            {
+              "key": "password",
+              "value": "Password123"
+            },
+            {
+              "key": "title",
+              "value": "Mr"
+            },
+            {
+              "key": "birth_date",
+              "value": "10"
+            },
+            {
+              "key": "birth_month",
+              "value": "january"
+            },
+            {
+              "key": "birth_year",
+              "value": "1994"
+            },
+            {
+              "key": "firstname",
+              "value": "Imoh"
+            },
+            {
+              "key": "lastname",
+              "value": "Effiong"
+            },
+            {
+              "key": "company",
+              "value": "BL4"
+            },
+            {
+              "key": "address1",
+              "value": "nnew location"
+            },
+            {
+              "key": "country",
+              "value": "United states"
+            },
+            {
+              "key": "state",
+              "value": "California"
+            },
+            {
+              "key": "city",
+              "value": "Los Angeles"
+            },
+            {
+              "key": "zipcode",
+              "value": "90001"
+            },
+            {
+              "key": "mobile_number",
+              "value": "09031683855"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseUrl}}/updateAccount",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "updateAccount"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
