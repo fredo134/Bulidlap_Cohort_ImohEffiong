@@ -10,6 +10,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: API_testing
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -17,16 +21,13 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
 
       - name: Install Dependencies
-        run: |
-          cd API_testing
-          npm install
+        run: npm install
 
       - name: Run Postman Collection via Newman
         run: |
-          cd API_testing
           npx newman run "Automation Exercise - API Tests.postman_collection.json" -e "Buildlab.postman_environment.json" --reporters cli,html --reporter-html-export newman-report.html
 
       - name: Upload HTML Test Report Artifact
